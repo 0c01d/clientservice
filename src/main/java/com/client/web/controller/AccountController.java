@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.util.ArrayList;
 
 @RestController
@@ -32,7 +33,7 @@ public class AccountController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(method = RequestMethod.POST)
-    public AccountResponse createAccount(@RequestBody AccountRequest accountRequest, HttpServletResponse response) {
+    public AccountResponse createAccount(@Valid @RequestBody AccountRequest accountRequest, HttpServletResponse response) {
         Account account = accountService.save(accountRequest);
         response.addHeader(HttpHeaders.LOCATION, "/account/" + account.getId());
         return new AccountResponse(account);
@@ -49,7 +50,7 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/{accountId}", method = RequestMethod.PATCH)
-    public AccountResponse updateAccount(@PathVariable("accountId") Integer accountId, @RequestBody AccountRequest accountRequest) {
+    public AccountResponse updateAccount(@PathVariable("accountId") Integer accountId,@Valid @RequestBody AccountRequest accountRequest) {
         return new AccountResponse(accountService.update(accountId, accountRequest));
     }
 

@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,7 +28,7 @@ public class ClientProfileController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(method = RequestMethod.POST)
-    public ProfileResponse createProfile(@RequestBody ProfileRequest profileRequest, HttpServletResponse response) {
+    public ProfileResponse createProfile(@Valid @RequestBody ProfileRequest profileRequest, HttpServletResponse response) {
         Profile profile = profileService.save(profileRequest);
         response.addHeader(HttpHeaders.LOCATION, "/profile/" + profile.getId());
         return new ProfileResponse(profile);
@@ -39,7 +40,7 @@ public class ClientProfileController {
     }
 
     @RequestMapping(value = "/{profileId}", method = RequestMethod.PATCH)
-    public ProfileResponse updateProfile(@PathVariable Integer profileId, @RequestBody ProfileRequest profileRequest) {
+    public ProfileResponse updateProfile(@PathVariable Integer profileId,@Valid @RequestBody ProfileRequest profileRequest) {
         return new ProfileResponse(profileService.update(profileId, profileRequest));
     }
 
