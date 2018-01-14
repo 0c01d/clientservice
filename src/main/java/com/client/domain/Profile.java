@@ -15,28 +15,16 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
 
-    @Column(name = "firstname")
-    public String firstname;
-
-    @Column(name = "middlename")
-    public String middlename;
-
-    @Column(name = "lastname")
-    public String lastname;
-
     @Column(name = "email")
     public String email;
 
     @Column(name = "phone")
-    public String phone;
-
-    @Column(name = "gender")
-    public String gender;
-
-    @Column(name = "date_of_birth")
-    public String dateOfBirth;
+    public String phoneNumber;
 
     @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Account account;
+
+    @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private ExtendedProfile extendedProfile;
 
 }

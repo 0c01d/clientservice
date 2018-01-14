@@ -35,7 +35,8 @@ public class AccountServiceImpl implements AccountService {
     public Account save(AccountRequest accountRequest) {
         Account account = new Account()
                 .setNickname(accountRequest.getNickname())
-                .setUuid(accountRequest.getWalletUUID());
+                .setUuid(accountRequest.getWalletUUID())
+                .setPassword(accountRequest.getPassword());
 
         Profile profile = profileService.getById(accountRequest.getProfileId());
         if( profile != null) {
@@ -61,6 +62,7 @@ public class AccountServiceImpl implements AccountService {
             throw new EntityNotFoundException("Account '{" + accountId + "}' not found");
         }
         account.setNickname(accountRequest.getNickname() != null ? accountRequest.getNickname() : account.getNickname());
+        account.setPassword(accountRequest.getPassword() != null ? accountRequest.getPassword() : account.getPassword());
         return accountRepository.save(account);
     }
 

@@ -1,8 +1,10 @@
 package com.client.web.model;
 
 import com.client.domain.Account;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import java.util.UUID;
 
@@ -17,7 +19,7 @@ public class AccountResponse {
     public AccountResponse(Account account) {
         this.id = account.getId();
         this.nickname = account.getNickname();
-        this.profileId = account.getProfile() != null ? account.getProfile().getId() : null;
+        this.profileId = account.getProfile().getId(); /*!= null ? account.getProfile().getId() : null;*/
         this.walletUUID = account.getUuid();
 
     }

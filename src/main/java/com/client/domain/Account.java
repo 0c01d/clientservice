@@ -19,6 +19,9 @@ public class Account {
     @Column(name = "nickname")
     public String nickname;
 
+    @Column(name = "password")
+    public String password;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "profile_id")
     private Profile profile;

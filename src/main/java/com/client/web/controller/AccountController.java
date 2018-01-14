@@ -49,6 +49,7 @@ public class AccountController {
         return new AccountResponse(accountService.getByNickname(accountName));
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/{accountId}", method = RequestMethod.PATCH)
     public AccountResponse updateAccount(@PathVariable("accountId") Integer accountId,@Valid @RequestBody AccountRequest accountRequest) {
         return new AccountResponse(accountService.update(accountId, accountRequest));

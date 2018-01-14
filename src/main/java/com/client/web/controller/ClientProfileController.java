@@ -39,6 +39,7 @@ public class ClientProfileController {
         return new ProfileResponse(profileService.getById(profileId));
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/{profileId}", method = RequestMethod.PATCH)
     public ProfileResponse updateProfile(@PathVariable Integer profileId,@Valid @RequestBody ProfileRequest profileRequest) {
         return new ProfileResponse(profileService.update(profileId, profileRequest));

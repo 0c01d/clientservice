@@ -3,13 +3,11 @@ package com.client.web;
 
 import com.client.domain.Profile;
 import com.client.repository.ProfileRepository;
-import com.client.service.jpa.ProfileServiceImpl;
 import com.client.web.model.ProfileRequest;
 import com.client.web.model.ProfileResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -18,9 +16,11 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
-
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(SpringExtension.class)
@@ -40,8 +40,6 @@ class ProfileControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-   /* @InjectMocks
-    private ProfileServiceImpl profileService;*/
 
     @MockBean
     private ProfileRepository profileRepositoryMock;
@@ -131,3 +129,5 @@ class ProfileControllerTest {
     }
 
 }
+
+

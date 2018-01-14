@@ -36,13 +36,8 @@ public class ProfileServiceImpl implements ProfileService {
     @Transactional
     public Profile save(ProfileRequest profileRequest) {
         Profile profile = new Profile()
-                .setFirstname(profileRequest.getFirstname())
-                .setMiddlename(profileRequest.getMiddlename())
-                .setLastname(profileRequest.getLastname())
                 .setEmail(profileRequest.getEmail())
-                .setPhone(profileRequest.getPhone())
-                .setGender(profileRequest.getGender())
-                .setDateOfBirth(profileRequest.getDateOfBirth());
+                .setPhoneNumber(profileRequest.getPhoneNumber());
         return profileRepository.save(profile);
     }
 
@@ -61,13 +56,8 @@ public class ProfileServiceImpl implements ProfileService {
         if (profile == null) {
             throw new EntityNotFoundException("Profile '{" + profileId + "}' not found");
         }
-        profile.setFirstname(profileRequest.getFirstname() != null ? profileRequest.getFirstname() : profile.getFirstname());
-        profile.setMiddlename(profileRequest.getMiddlename() != null ? profileRequest.getMiddlename() : profile.getMiddlename());
-        profile.setLastname(profileRequest.getLastname() != null ? profileRequest.getLastname() : profile.getLastname());
         profile.setEmail(profileRequest.getEmail() != null ? profileRequest.getEmail() : profile.getEmail());
-        profile.setPhone(profileRequest.getPhone() != null ? profileRequest.getPhone() : profile.getPhone());
-        profile.setGender(profileRequest.getGender() != null ? profileRequest.getGender() : profile.getGender());
-        profile.setDateOfBirth(profileRequest.getDateOfBirth() != null ? profileRequest.getDateOfBirth() : profile.getDateOfBirth());
+        profile.setPhoneNumber(profileRequest.getPhoneNumber() != null ? profileRequest.getPhoneNumber() : profile.getPhoneNumber());
         return profileRepository.save(profile);
     }
 
