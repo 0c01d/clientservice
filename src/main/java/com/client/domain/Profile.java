@@ -9,13 +9,13 @@ public class Profile {
     @Id
     @Column(name = "profile_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
     @Column(name = "email")
-    public String email;
+    private String email;
 
     @Column(name = "phone")
-    public String phoneNumber;
+    private String phoneNumber;
 
     @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Account account;

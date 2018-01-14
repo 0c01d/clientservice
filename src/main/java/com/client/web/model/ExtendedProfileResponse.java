@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ExtendedProfileResponse {
 
-    private Integer id;
+    private Long id;
     private String firstname;
     private String middlename;
     private String lastname;
@@ -14,7 +14,7 @@ public class ExtendedProfileResponse {
     private String dateOfBirth;
     private Long profileId;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
     public String getFirstname() {

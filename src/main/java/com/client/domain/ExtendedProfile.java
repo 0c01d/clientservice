@@ -11,31 +11,31 @@ public class ExtendedProfile {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    private Long id;
 
     @Column(name = "firstname")
-    public String firstname;
+    private String firstname;
 
     @Column(name = "middlename")
-    public String middlename;
+    private String middlename;
 
     @Column(name = "lastname")
-    public String lastname;
+    private String lastname;
 
     @Column(name = "gender")
-    public String gender;
+    private String gender;
 
     @Column(name = "date_of_birth")
-    public String dateOfBirth;
+    private String dateOfBirth;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "profile_id")
     private Profile profile;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getFirstname() {
