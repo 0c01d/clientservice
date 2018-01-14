@@ -15,7 +15,6 @@ import javax.persistence.EntityNotFoundException;
 public class AccountServiceImpl implements AccountService {
 
     private final AccountRepository accountRepository;
-
     private final ProfileServiceImpl profileService;
 
     @Autowired
@@ -33,10 +32,10 @@ public class AccountServiceImpl implements AccountService {
     @Override
     @Transactional
     public Account save(AccountRequest accountRequest) {
-        Account account = new Account()
-                .setNickname(accountRequest.getNickname())
-                .setUuid(accountRequest.getWalletUUID())
-                .setPassword(accountRequest.getPassword());
+        Account account = new Account();
+                account.setNickname(accountRequest.getNickname());
+                account.setUuid(accountRequest.getWalletUUID());
+                account.setPassword(accountRequest.getPassword());
 
         Profile profile = profileService.getById(accountRequest.getProfileId());
         if( profile != null) {
@@ -48,7 +47,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     @Transactional(readOnly = true)
-    public Account getById(Integer accountId) {
+    public Account getById(Long accountId) {
         return accountRepository.findById(accountId)
                 .orElseThrow(() -> new EntityNotFoundException("Account '{" + accountId + "}' not found"));
     }
@@ -56,7 +55,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     @Transactional
-    public Account update(Integer accountId, AccountRequest accountRequest) {
+    public Account update(Long accountId, AccountRequest accountRequest) {
         Account account = this.getById(accountId);
         if (account == null) {
             throw new EntityNotFoundException("Account '{" + accountId + "}' not found");

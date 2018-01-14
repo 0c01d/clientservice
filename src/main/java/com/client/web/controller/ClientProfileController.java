@@ -35,19 +35,19 @@ public class ClientProfileController {
     }
 
     @RequestMapping(value = "/{profileId}", method = RequestMethod.GET)
-    public ProfileResponse getProfileById(@PathVariable("profileId") final Integer profileId) {
+    public ProfileResponse getProfileById(@PathVariable("profileId") final Long profileId) {
         return new ProfileResponse(profileService.getById(profileId));
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/{profileId}", method = RequestMethod.PATCH)
-    public ProfileResponse updateProfile(@PathVariable Integer profileId,@Valid @RequestBody ProfileRequest profileRequest) {
+    public ProfileResponse updateProfile(@PathVariable Long profileId,@Valid @RequestBody ProfileRequest profileRequest) {
         return new ProfileResponse(profileService.update(profileId, profileRequest));
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(value = "/{profileId}", method = RequestMethod.DELETE)
-    public void deleteProfile(@PathVariable Integer profileId) {
+    public void deleteProfile(@PathVariable Long profileId) {
         profileService.deleteProfile(profileId);
     }
 

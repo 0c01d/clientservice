@@ -1,11 +1,9 @@
 package com.client.web.model;
 
 import com.client.domain.ExtendedProfile;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
-@Data
-@NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ExtendedProfileResponse {
 
     private Integer id;
@@ -14,7 +12,29 @@ public class ExtendedProfileResponse {
     private String lastname;
     private String gender;
     private String dateOfBirth;
-    private Integer profileId;
+    private Long profileId;
+
+    public Integer getId() {
+        return id;
+    }
+    public String getFirstname() {
+        return firstname;
+    }
+    public String getMiddlename() {
+        return middlename;
+    }
+    public String getLastname() {
+        return lastname;
+    }
+    public String getGender() {
+        return gender;
+    }
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+    public Long getProfileId() {
+        return profileId;
+    }
 
     public ExtendedProfileResponse(ExtendedProfile extendedProfile){
         this.id = extendedProfile.getId();

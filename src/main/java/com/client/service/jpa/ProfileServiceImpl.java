@@ -35,15 +35,15 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     @Transactional
     public Profile save(ProfileRequest profileRequest) {
-        Profile profile = new Profile()
-                .setEmail(profileRequest.getEmail())
-                .setPhoneNumber(profileRequest.getPhoneNumber());
+        Profile profile = new Profile();
+                profile.setEmail(profileRequest.getEmail());
+                profile.setPhoneNumber(profileRequest.getPhoneNumber());
         return profileRepository.save(profile);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Profile getById(Integer profileId) {
+    public Profile getById(Long profileId) {
         return profileRepository.findById(profileId)
                 .orElseThrow(() -> new EntityNotFoundException("Profile '{" + profileId + "}' not found"));
     }
@@ -51,7 +51,7 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Override
     @Transactional
-    public Profile update(Integer profileId, ProfileRequest profileRequest) {
+    public Profile update(Long profileId, ProfileRequest profileRequest) {
         Profile profile = this.getById(profileId);
         if (profile == null) {
             throw new EntityNotFoundException("Profile '{" + profileId + "}' not found");
@@ -63,7 +63,7 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Override
     @Transactional
-    public void deleteProfile(Integer profileId) {
+    public void deleteProfile(Long profileId) {
         profileRepository.deleteById(profileId);
     }
 

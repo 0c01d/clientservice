@@ -27,12 +27,12 @@ public class ExtendedProfileServiceImpl implements ExtendedProfileService {
     @Override
     @Transactional
     public ExtendedProfile save(ExtendedProfileRequest extendedProfileRequest) {
-        ExtendedProfile extendedProfile = new ExtendedProfile()
-                .setFirstname(extendedProfileRequest.getFirstname())
-                .setMiddlename(extendedProfileRequest.getMiddlename())
-                .setLastname(extendedProfileRequest.getLastname())
-                .setGender(extendedProfileRequest.getGender())
-                .setDateOfBirth(extendedProfileRequest.getDateOfBirth());
+        ExtendedProfile extendedProfile = new ExtendedProfile();
+                extendedProfile.setFirstname(extendedProfileRequest.getFirstname());
+                extendedProfile.setMiddlename(extendedProfileRequest.getMiddlename());
+                extendedProfile.setLastname(extendedProfileRequest.getLastname());
+                extendedProfile.setGender(extendedProfileRequest.getGender());
+                extendedProfile.setDateOfBirth(extendedProfileRequest.getDateOfBirth());
 
         Profile profile = profileService.getById(extendedProfileRequest.getProfileId());
         if( profile != null) {
@@ -43,14 +43,14 @@ public class ExtendedProfileServiceImpl implements ExtendedProfileService {
 
     @Override
     @Transactional(readOnly = true)
-    public ExtendedProfile getById(Integer profileId) {
+    public ExtendedProfile getById(Long profileId) {
         return extendedProfileRepository.findById(profileId)
                 .orElseThrow(() -> new EntityNotFoundException("ExtendedProfile '{" + profileId + "}' not found"));
     }
 
     @Override
     @Transactional
-    public ExtendedProfile update(Integer profileId, ExtendedProfileRequest extendedProfileRequest) {
+    public ExtendedProfile update(Long profileId, ExtendedProfileRequest extendedProfileRequest) {
         ExtendedProfile extendedProfile = this.getById(profileId);
         if (extendedProfile == null) {
             throw new EntityNotFoundException("ExtendedProfile '{" + profileId + "}' not found");

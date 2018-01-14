@@ -32,13 +32,13 @@ public class ExtendedProfileController {
     }
 
     @RequestMapping(value = "/{profileId}", method = RequestMethod.GET)
-    public ExtendedProfileResponse getExtendedProfileById(@PathVariable("profileId") final Integer profileId) {
+    public ExtendedProfileResponse getExtendedProfileById(@PathVariable("profileId") final Long profileId) {
         return new ExtendedProfileResponse(extendedProfileService.getById(profileId));
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/{profileId}", method = RequestMethod.PATCH)
-    public ExtendedProfileResponse updateExtendedProfile(@PathVariable Integer profileId,@Valid @RequestBody ExtendedProfileRequest extendedProfileRequest) {
+    public ExtendedProfileResponse updateExtendedProfile(@PathVariable Long profileId,@Valid @RequestBody ExtendedProfileRequest extendedProfileRequest) {
         return new ExtendedProfileResponse(extendedProfileService.update(profileId, extendedProfileRequest));
     }
 }

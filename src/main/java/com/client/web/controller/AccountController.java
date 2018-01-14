@@ -40,7 +40,7 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/{accountId}", method = RequestMethod.GET)
-    public AccountResponse getAccountById(@PathVariable("accountId") Integer accountId) {
+    public AccountResponse getAccountById(@PathVariable("accountId") Long accountId) {
         return new AccountResponse(accountService.getById(accountId));
     }
 
@@ -51,7 +51,7 @@ public class AccountController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/{accountId}", method = RequestMethod.PATCH)
-    public AccountResponse updateAccount(@PathVariable("accountId") Integer accountId,@Valid @RequestBody AccountRequest accountRequest) {
+    public AccountResponse updateAccount(@PathVariable("accountId") Long accountId,@Valid @RequestBody AccountRequest accountRequest) {
         return new AccountResponse(accountService.update(accountId, accountRequest));
     }
 
