@@ -1,3 +1,4 @@
+/*
 package com.client.web.model;
 
 import com.client.domain.Account;
@@ -32,4 +33,4 @@ public class AccountResponse {
         this.walletUUID = account.getUuid();
 
     }
-}
+}*/

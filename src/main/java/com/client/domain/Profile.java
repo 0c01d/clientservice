@@ -2,12 +2,13 @@ package com.client.domain;
 
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Table(name = "profiles", schema = "client_service")
 public class Profile {
     @Id
-    @Column(name = "profile_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -17,8 +18,11 @@ public class Profile {
     @Column(name = "phone")
     private String phoneNumber;
 
-    @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Account account;
+    @Column(name = "walletUUID")
+    private UUID walletUUID;
+
+   /* @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Account account;*/
 
     @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private ExtendedProfile extendedProfile;
@@ -41,12 +45,19 @@ public class Profile {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    public Account getAccount() {
-        return account;
+    public UUID getWalletUUID() {
+        return walletUUID;
     }
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setWalletUUID(UUID walletUUID) {
+        this.walletUUID = walletUUID;
     }
+
+    /* public Account getAccount() {
+                return account;
+            }
+            public void setAccount(Account account) {
+                this.account = account;
+            }*/
     public ExtendedProfile getExtendedProfile() {
         return extendedProfile;
     }
@@ -55,10 +66,11 @@ public class Profile {
     }
     public Profile(){}
 
-    public Profile(String email, String phoneNumber, Account account, ExtendedProfile extendedProfile) {
+    public Profile(String email, String phoneNumber, UUID walletUUID, /*Account account,*/ ExtendedProfile extendedProfile) {
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.account = account;
+        this.walletUUID = walletUUID;
+       /* this.account = account;*/
         this.extendedProfile = extendedProfile;
     }
 }

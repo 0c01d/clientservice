@@ -1,3 +1,4 @@
+/*
 package com.client.web.controller;
 
 import com.client.domain.Account;
@@ -24,12 +25,14 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-   /* @RequestMapping(method = RequestMethod.GET)
+   */
+/* @RequestMapping(method = RequestMethod.GET)
     public ArrayList<AccountResponse> getAccounts() {
         ArrayList<AccountResponse> accountResponses = new ArrayList<>();
         accountService.getAccounts().forEach(account -> accountResponses.add(new AccountResponse(account)));
         return accountResponses;
-    }*/
+    }*//*
+
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(method = RequestMethod.POST)
@@ -55,11 +58,13 @@ public class AccountController {
         return new AccountResponse(accountService.update(accountId, accountRequest));
     }
 
-  /*  @ResponseStatus(HttpStatus.NO_CONTENT)
+  */
+/*  @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(value = "/{accountId}", method = RequestMethod.DELETE)
     public void deleteAccount(@PathVariable Integer accountId) {
         accountService.delete(accountId);
-    }*/
+    }*//*
 
 
-}
+
+}*/

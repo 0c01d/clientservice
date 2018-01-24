@@ -1,3 +1,4 @@
+/*
 package com.client.service.jpa;
 
 import com.client.domain.Account;
@@ -23,11 +24,13 @@ public class AccountServiceImpl implements AccountService {
         this.profileService = profileService;
     }
 
-   /* @Override
+   */
+/* @Override
     @Transactional(readOnly = true)
     public Iterable<Account> getAccounts() {
         return accountRepository.findAll();
-    }*/
+    }*//*
+
 
     @Override
     @Transactional
@@ -74,18 +77,22 @@ public class AccountServiceImpl implements AccountService {
 
     }
 
-    /* @Override
+    */
+/* @Override
     @Transactional
     public void delete(Integer accountId) {
         accountRepository.deleteById(accountId);
-    }*/
+    }*//*
 
-   /* @Override
+
+   */
+/* @Override
     public Account addProfile(Integer accountId, Integer profileId) {
         Account account = this.getById(accountId);
         Profile profile = profileService.getById(profileId);
         account.setProfile(profile);
         return accountRepository.save(account);
-    }*/
+    }*//*
 
-}
+
+}*/

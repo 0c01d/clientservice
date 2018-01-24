@@ -18,13 +18,13 @@ public class ExtendedProfileRequest {
     @Size(min = 3, max = 15)
     private String lastname;
 
-    @NotBlank
+
     private String gender;
 
-    @NotBlank
+
     private String dateOfBirth;
 
-    @NotNull
+
     private Long profileId;
 
     public String getFirstname() {

@@ -1,3 +1,4 @@
+/*
 package com.client.repository;
 
 import com.client.domain.Account;
@@ -7,3 +8,4 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     Account findAccountByNickname(String name);
 
 }
+*/

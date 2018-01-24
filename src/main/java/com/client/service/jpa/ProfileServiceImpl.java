@@ -38,6 +38,7 @@ public class ProfileServiceImpl implements ProfileService {
         Profile profile = new Profile();
                 profile.setEmail(profileRequest.getEmail());
                 profile.setPhoneNumber(profileRequest.getPhoneNumber());
+                profile.setWalletUUID(profileRequest.getWalletUUID());
         return profileRepository.save(profile);
     }
 

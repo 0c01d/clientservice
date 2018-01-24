@@ -1,3 +1,4 @@
+/*
 package com.client.domain;
 
 
@@ -65,4 +66,4 @@ public class Account {
         this.uuid = uuid;
     }
 
-}
+}*/

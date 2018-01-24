@@ -1,4 +1,4 @@
-package com.client.web.model;
+/*package com.client.web.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.validation.constraints.*;
@@ -42,4 +42,4 @@ public class AccountRequest {
         this.walletUUID = walletUUID;
     }
 
-}
+}*/
