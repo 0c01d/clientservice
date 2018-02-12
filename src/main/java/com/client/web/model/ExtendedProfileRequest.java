@@ -21,9 +21,7 @@ public class ExtendedProfileRequest {
 
     private String gender;
 
-
     private String dateOfBirth;
-
 
     private Long profileId;
 

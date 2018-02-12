@@ -39,6 +39,7 @@ public class ProfileServiceImpl implements ProfileService {
                 profile.setEmail(profileRequest.getEmail());
                 profile.setPhoneNumber(profileRequest.getPhoneNumber());
                 profile.setWalletUUID(profileRequest.getWalletUUID());
+                profile.setUsername(profileRequest.getUsername());
         return profileRepository.save(profile);
     }
 
@@ -49,6 +50,14 @@ public class ProfileServiceImpl implements ProfileService {
                 .orElseThrow(() -> new EntityNotFoundException("Profile '{" + profileId + "}' not found"));
     }
 
+    @Override
+    public Profile getByUsername(String username) {
+        if (profileRepository.getProfileByUsername(username) == null) {
+            throw new EntityNotFoundException("Profile '{" + username + "}' not found");
+        }
+        return profileRepository.getProfileByUsername(username);
+
+    }
 
     @Override
     @Transactional
@@ -59,6 +68,7 @@ public class ProfileServiceImpl implements ProfileService {
         }
         profile.setEmail(profileRequest.getEmail() != null ? profileRequest.getEmail() : profile.getEmail());
         profile.setPhoneNumber(profileRequest.getPhoneNumber() != null ? profileRequest.getPhoneNumber() : profile.getPhoneNumber());
+        profile.setUsername(profileRequest.getUsername() != null ? profileRequest.getUsername() : profile.getUsername());
         return profileRepository.save(profile);
     }
 

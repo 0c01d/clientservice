@@ -13,6 +13,7 @@ public class ProfileRequest {
     private String phoneNumber;
 
     private UUID walletUUID;
+    private String username;
 
     public String getEmail() {
         return email;
@@ -23,13 +24,18 @@ public class ProfileRequest {
     public UUID getWalletUUID() {
         return walletUUID;
     }
+    public String getUsername() {
+        return username;
+    }
 
     public ProfileRequest(@JsonProperty("email") String email,
                           @JsonProperty("phoneNumber") String phoneNumber,
-                          @JsonProperty("walletUUID") UUID walletUUID){
+                          @JsonProperty("walletUUID") UUID walletUUID,
+                          @JsonProperty("username") String username){
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.walletUUID = walletUUID;
+        this.username = username;
     }
 }
 

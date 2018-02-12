@@ -38,6 +38,10 @@ public class ClientProfileController {
     public ProfileResponse getProfileById(@PathVariable("profileId") final Long profileId) {
         return new ProfileResponse(profileService.getById(profileId));
     }
+    @RequestMapping(value = "/{username}", method = RequestMethod.GET)
+    public ProfileResponse getProfileByUsername(@PathVariable("username") final String username) {
+        return new ProfileResponse(profileService.getByUsername(username));
+    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/{profileId}", method = RequestMethod.PATCH)

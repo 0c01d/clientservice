@@ -21,6 +21,9 @@ public class Profile {
     @Column(name = "walletUUID")
     private UUID walletUUID;
 
+    @Column(name = "username")
+    private String username;
+
    /* @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Account account;*/
 
@@ -51,13 +54,19 @@ public class Profile {
     public void setWalletUUID(UUID walletUUID) {
         this.walletUUID = walletUUID;
     }
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     /* public Account getAccount() {
-                return account;
-            }
-            public void setAccount(Account account) {
-                this.account = account;
-            }*/
+                    return account;
+                }
+                public void setAccount(Account account) {
+                    this.account = account;
+                }*/
     public ExtendedProfile getExtendedProfile() {
         return extendedProfile;
     }
@@ -66,11 +75,12 @@ public class Profile {
     }
     public Profile(){}
 
-    public Profile(String email, String phoneNumber, UUID walletUUID, /*Account account,*/ ExtendedProfile extendedProfile) {
+    public Profile(String email, String phoneNumber, UUID walletUUID, String username, /*Account account,*/ ExtendedProfile extendedProfile) {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.walletUUID = walletUUID;
        /* this.account = account;*/
         this.extendedProfile = extendedProfile;
+        this.username = username;
     }
 }

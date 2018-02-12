@@ -9,6 +9,7 @@ public class ProfileResponse {
     private String email;
     private String phoneNumber;
     private UUID walletUUID;
+    private String username;
 
     public Long getId() {
         return id;
@@ -22,11 +23,15 @@ public class ProfileResponse {
     public UUID getWalletUUID() {
         return walletUUID;
     }
+    public String getUsername() {
+        return username;
+    }
 
     public ProfileResponse(Profile profile) {
         this.id = profile.getId();
         this.email = profile.getEmail();
         this.phoneNumber = profile.getPhoneNumber();
         this.walletUUID = profile.getWalletUUID();
+        this.username = profile.getUsername();
     }
 }
