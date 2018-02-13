@@ -56,7 +56,14 @@ public class ProfileServiceImpl implements ProfileService {
             throw new EntityNotFoundException("Profile '{" + username + "}' not found");
         }
         return profileRepository.getProfileByUsername(username);
+    }
 
+    @Override
+    public Profile getByEmail(String email)  {
+        if (profileRepository.getProfileByEmail(email) == null) {
+            throw new EntityNotFoundException("Profile '{" + email + "}' not found");
+        }
+        return profileRepository.getProfileByEmail(email);
     }
 
     @Override

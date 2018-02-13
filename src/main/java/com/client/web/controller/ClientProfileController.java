@@ -33,15 +33,33 @@ public class ClientProfileController {
         response.addHeader(HttpHeaders.LOCATION, "/profile/" + profile.getId());
         return new ProfileResponse(profile);
     }
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ProfileResponse getProfileById(@PathVariable("id") final Long id) {
+        return new ProfileResponse(profileService.getById(id));
+    }
 
-    @RequestMapping(value = "/{profileId}", method = RequestMethod.GET)
-    public ProfileResponse getProfileById(@PathVariable("profileId") final Long profileId) {
-        return new ProfileResponse(profileService.getById(profileId));
+    @RequestMapping(value = "/by", method = RequestMethod.GET)
+    public ProfileResponse getProfileByParam(@RequestParam(value = "nickname", required = false) final String nickname,
+                                             @RequestParam(value = "email", required = false) final String email,
+                                             HttpServletResponse servletResponse) {
+        Profile profile;
+        if (nickname != null && nickname.length() > 0) {
+            profile = profileService.getByUsername(nickname);
+        } else if (email != null && email.length() > 0) {
+            profile = profileService.getByEmail(email);
+        } else {
+            servletResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return null;
+        }
+
+        if (profile != null) {
+            return new ProfileResponse(profile);
+        } else {
+            servletResponse.setStatus(HttpServletResponse.SC_NO_CONTENT);
+            return null;
+        }
     }
-    @RequestMapping(value = "/{username}", method = RequestMethod.GET)
-    public ProfileResponse getProfileByUsername(@PathVariable("username") final String username) {
-        return new ProfileResponse(profileService.getByUsername(username));
-    }
+
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/{profileId}", method = RequestMethod.PATCH)
